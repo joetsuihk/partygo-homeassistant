@@ -68,6 +68,30 @@
       entity_id: media_player.nr646
       source: Bluray
     service: media_player.select_source
+  
+'nr646_switch':
+  alias: AVR switch
+  sequence:
+  - data:
+      entity_id: media_player.nr646
+      volume_level: 0.5
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.nr646
+      source: Video 3
+    service: media_player.select_source
+
+'nr646_apple_tv':
+  alias: AVR apple tv
+  sequence:
+  - data:
+      entity_id: media_player.nr646
+      volume_level: 0.5
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.nr646
+      source: Video 2
+    service: media_player.select_source
 
 'lg_netflix':
   alias: LG netflix
@@ -87,7 +111,7 @@
   sequence:
   - data:
       entity_id: media_player.lg_webos_smart_tv
-      source: Youtube
+      source: YouTube
     service: media_player.select_source
 
 'lg_vol_up':
