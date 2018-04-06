@@ -1,0 +1,86 @@
+'1522644744669':
+  alias: Turn On TVs & AVR
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+    entity_id: media_player.nr646
+    service: media_player.turn_on
+  - data:
+      entity_id: media_player.nr646
+    entity_id: media_player.lg_webos_smart_tv
+    service: media_player.turn_on
+  - data:
+      packet:
+      - JgAQAQs7CxcMFwsYCxgLFww6CzsLFww6CxgLGAsXCzsLGAsABewLOgwXChkKGQoYCzsKGQoYCzsKGQo7CzsKPAoYCjwKAAWmCzsKGQoZChgKGQoZCjsLOwsYCjsLGAoZChgLOwsYCwAF7As7CxgLFwwXCxgLOgwXDBcLOgwXDDoLOgw6CxgLOgwABaQNOgsYCxgLFwwXCxgLOgw6CxgLOgwXCxgLFww6CxgLAAXsDDoLFwwXDBcLGAs5DRcLGAs6DBcLOws6DDoLGAs6DAAFpQw5DBcMFwsYCxgLFww6CzsLFww6CxgLFwwXCzsLFwwABewLOgwXCxgLGAsXDDoLGAsYCzoLGAs6DDoLOwsXDDoLAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_106
+'1522648898669':
+  alias: Turn Off TVs & AVR
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+    service: media_player.turn_off
+  - data:
+      entity_id: media_player.nr646
+    service: media_player.turn_off
+  - data:
+      packet:
+      - JgAQAQs7CxcMFwsYCxgLFww6CzsLFww6CxgLGAsXCzsLGAsABewLOgwXChkKGQoYCzsKGQoYCzsKGQo7CzsKPAoYCjwKAAWmCzsKGQoZChgKGQoZCjsLOwsYCjsLGAoZChgLOwsYCwAF7As7CxgLFwwXCxgLOgwXDBcLOgwXDDoLOgw6CxgLOgwABaQNOgsYCxgLFwwXCxgLOgw6CxgLOgwXCxgLFww6CxgLAAXsDDoLFwwXDBcLGAs5DRcLGAs6DBcLOws6DDoLGAs6DAAFpQw5DBcMFwsYCxgLFww6CzsLFww6CxgLFwwXCzsLFwwABewLOgwXCxgLGAsXDDoLGAsYCzoLGAs6DDoLOwsXDDoLAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_106
+    
+'nr646_vol_up':
+  alias: AVR volume up
+  sequence:
+  - data:
+      entity_id: media_player.nr646
+    service: media_player.volume_set
+    data_template:
+      volume_level: '{{ states.media_player.nr646.attributes.volume_level | float + 0.05 }}'
+      
+'nr646_vol_down':
+  alias: AVR volume down
+  sequence:
+  - data:
+      entity_id: media_player.nr646
+    service: media_player.volume_set
+    data_template:
+      volume_level: '{{ states.media_player.nr646.attributes.volume_level | float - 0.05 }}'
+
+
+'lg_netflix':
+  alias: LG netflix
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+      volume_level: 0.4
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+      source: Netflix
+    service: media_player.select_source
+        
+
+'lg_youtube':
+  alias: LG youtube
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+      source: Youtube
+    service: media_player.select_source
+
+'lg_vol_up':
+  alias: LG volume up
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+    service: media_player.volume_set
+    data_template:
+      volume_level: '{{ states.media_player.lg_webos_smart_tv.attributes.volume_level | float + 0.05 }}'
+      
+'lg_vol_down':
+  alias: LG volume down
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+    service: media_player.volume_set
+    data_template:
+      volume_level: '{{ states.media_player.lg_webos_smart_tv.attributes.volume_level | float - 0.05 }}'
