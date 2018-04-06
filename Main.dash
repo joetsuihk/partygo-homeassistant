@@ -1,0 +1,184 @@
+##
+## Main arguments, all optional
+##
+title: Main Panel
+widget_dimensions: [120, 120]
+widget_size: [1, 1]
+widget_margins: [5, 5]
+columns: 7
+global_parameters:
+    use_comma: 0
+    precision: 1
+    use_hass_icon: 1
+    namespace: default
+    devices:
+      media_player:
+        step: 5
+
+style_active: "color: grey"
+
+clock:
+    widget_type: clock
+    date_format_country: "us"
+    date_format_options:
+      weekday: "short"
+      day: "numeric"
+      month: "numeric"
+
+ktv:
+    title: KTV
+    widget_type: script
+    entity: script.nr646_ktv
+    icon_on: fa-hourglass-half
+    icon_off: fa-square
+
+switch_on_sharp:
+    title: Switch1 on Sharp
+    widget_type: script
+    entity: script.nr646_switch
+    icon_on: fa-hourglass-half
+    icon_off: fa-users
+
+switch_on_lg:
+    title: Switch2 on LG
+    widget_type: switch
+    entity: scene.switch_02
+    icon_on: fa-hourglass-half
+    icon_off: fa-users
+    
+ps4_on_sharp:
+    title: PS4 on Sharp
+    widget_type: script
+    entity: script.nr646_ps4
+    icon_on: fa-hourglass-half
+    icon_off: fa-gamepad
+
+ps4_on_lg:
+    title: PS4 on LG
+    widget_type: switch
+    entity: scene.ps4__on_lg
+    icon_on: fa-hourglass-half
+    icon_off: fa-gamepad
+    icon_style_active: "color:grey;"
+    
+appletv_on_sharp:
+    title: Apple TV
+    widget_type: script
+    entity: script.nr646_apple_tv
+    icon_on: fa-hourglass-half
+    icon_off: fa-apple
+    icon_style_active: "color:grey;"
+
+lg_copy_sharp:
+    title: LG copy Sharp
+    widget_type: switch
+    entity: scene.lg_copy_sharp
+    icon_on: fa-square
+    icon_off: fa-square
+    icon_style_active: "color:grey;"
+    
+moonlight:
+    title: Moonlight
+    widget_type: switch
+    entity: switch.partygo_moon_light
+
+starlight1:
+    title: Starlight1
+    widget_type: switch
+    entity: switch.partygo_star_light
+
+starlight2:
+    title: Starlight2
+    widget_type: switch
+    entity: switch.partygo_star_light__2
+
+spotlight1:
+    title: Spotlight1
+    widget_type: switch
+    entity: switch.partygo_spot_light__1
+
+spotlight2:
+    title: Spotlight2
+    widget_type: switch
+    entity: switch.partygo_spot_light__2
+
+sharp_label:
+    widget_type: label
+    title: Sharp TV
+    widget_style: "background: white; font-size: 150%;"
+    title_style: "color:black;"
+
+    
+lg_label:
+    widget_type: label
+    title: LG TV
+    widget_style: "background: white; font-size: 150%;"
+    title_style: "color:black;"
+
+lights_label:
+    widget_type: label
+    title: Lights
+    widget_style: "background: white; font-size: 150%;"
+    title_style: "color:black;"
+
+
+lg_vol_up:
+    widget_type: script
+    entity: script.lg_vol_up
+    title: Volume +
+    icon_on: fa-hourglass-half
+    icon_off: fa-plus
+    
+lg_vol_down:
+    widget_type: script
+    entity: script.lg_vol_down
+    title: Volume -
+    icon_on: fa-hourglass-half
+    icon_off: fa-minus
+    
+lg_netflix:
+    widget_type: script
+    entity: script.lg_netflix
+    title: Netflix -
+    icon_on: fa-hourglass-half
+    icon_off: fa-tv
+lg_youtube:
+    widget_type: script
+    entity: script.lg_youtube
+    title: Youtube -
+    icon_on: fa-hourglass-half
+    icon_off: fa-youtube
+    
+nr646_vol_up:
+    widget_type: script
+    entity: script.nr646_vol_up
+    title: Volume +
+    icon_on: fa-hourglass-half
+    icon_off: fa-plus
+    
+nr646_vol_down:
+    widget_type: script
+    entity: script.nr646_vol_down
+    title: Volume -
+    icon_on: fa-hourglass-half
+    icon_off: fa-minus
+
+power_on:
+    widget_type: script
+    entity: script.1522644744669
+    title: Power On -
+    icon_on: fa-hourglass-half
+    icon_off: fa-battery-full
+
+power_off:
+    widget_type: script
+    entity: script.1522648898669
+    title: Power Off -
+    icon_on: fa-hourglass-half
+    icon_off: fa-battery-empty
+
+layout:
+    - clock(5x1), power_on, power_off
+    - lights_label, moonlight, starlight1, starlight2, spotlight1, spotlight2, switch.tiolet_light
+    - sharp_label, nr646_vol_down, nr646_vol_up, ktv, ps4_on_sharp, appletv_on_sharp, switch_on_sharp
+    - lg_label, lg_vol_down, lg_vol_up, switch_on_lg, ps4_on_lg, lg_netflix, lg_youtube #lg_copy_sharp
