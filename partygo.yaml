@@ -45,6 +45,17 @@
     data_template:
       volume_level: '{{ states.media_player.nr646.attributes.volume_level | float - 0.05 }}'
 
+'nr646_ps4':
+  alias: AVR PS4
+  sequence:
+  - data:
+      entity_id: media_player.nr646
+      volume_level: 0.4
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.nr646
+      source: Video 6
+    service: media_player.select_source
 
 'lg_netflix':
   alias: LG netflix
