@@ -57,6 +57,18 @@
       source: Video 6
     service: media_player.select_source
 
+'nr646_ktv':
+  alias: AVR KTV
+  sequence:
+  - data:
+      entity_id: media_player.nr646
+      volume_level: 0.4
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.nr646
+      source: Bluray
+    service: media_player.select_source
+
 'lg_netflix':
   alias: LG netflix
   sequence:
