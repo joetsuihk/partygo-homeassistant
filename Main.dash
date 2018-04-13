@@ -43,7 +43,7 @@ switch_on_lg:
     title: Switch2 on LG
     widget_type: switch
     entity: scene.switch_02
-    icon_on: fa-hourglass-half
+    icon_on: fa-users
     icon_off: fa-users
     
 ps4_on_sharp:
@@ -57,7 +57,7 @@ ps4_on_lg:
     title: PS4 on LG
     widget_type: switch
     entity: scene.ps4__on_lg
-    icon_on: fa-hourglass-half
+    icon_on: fa-gamepad
     icon_off: fa-gamepad
     icon_style_active: "color:grey;"
     
