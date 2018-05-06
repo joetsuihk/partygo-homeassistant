@@ -1,0 +1,210 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 22.291
+  longitude: 114.15
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Hong_Kong
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Add Configurator icon in side bar
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: http://hassio.local:3218
+
+# Add MQTT Mosquitto
+mqtt:
+  broker: core-mosquitto
+  username: sandwichclass
+  password: partygo
+
+# Add Sonoff Light Switch 
+
+switch:
+  - platform: mqtt
+    name: "Partygo Moon Light"
+    state_topic: "stat/sonoffT1UK301/POWER1"
+    command_topic: "cmnd/sonoffT1UK301/POWER1"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Partygo Star Light"
+    state_topic: "stat/sonoffT1UK301/POWER2"
+    command_topic: "cmnd/sonoffT1UK301/POWER2"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Partygo Star Light - 2"
+    state_topic: "stat/sonoffT1UK301/POWER3"
+    command_topic: "cmnd/sonoffT1UK301/POWER3"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: mqtt
+    name: "Partygo Spot Light - 1"
+    state_topic: "stat/sonoffT1UK201/POWER1"
+    command_topic: "cmnd/sonoffT1UK201/POWER1"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: mqtt
+    name: "Partygo Spot Light - 2"
+    state_topic: "stat/sonoffT1UK201/POWER2"
+    command_topic: "cmnd/sonoffT1UK201/POWER2"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true 
+
+  - platform: mqtt
+    name: "Tiolet Light"
+    state_topic: "stat/sonoffT1UK1/POWER"
+    command_topic: "cmnd/sonoffT1UK1/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true 
+    
+  - platform: broadlink
+    host: 192.168.1.106
+    mac: '34:EA:34:58:69:D8'
+    switches:
+      tv_sharp:
+        friendly_name: "Sharp Tv Power"
+        command_on: 'JgAQAQs7CxcMFwsYCxgLFww6CzsLFww6CxgLGAsXCzsLGAsABewLOgwXChkKGQoYCzsKGQoYCzsKGQo7CzsKPAoYCjwKAAWmCzsKGQoZChgKGQoZCjsLOwsYCjsLGAoZChgLOwsYCwAF7As7CxgLFwwXCxgLOgwXDBcLOgwXDDoLOgw6CxgLOgwABaQNOgsYCxgLFwwXCxgLOgw6CxgLOgwXCxgLFww6CxgLAAXsDDoLFwwXDBcLGAs5DRcLGAs6DBcLOws6DDoLGAs6DAAFpQw5DBcMFwsYCxgLFww6CzsLFww6CxgLFwwXCzsLFwwABewLOgwXCxgLGAsXDDoLGAsYCzoLGAs6DDoLOwsXDDoLAA0FAAAAAAAAAAA='
+        command_off: 'JgAQAQs7CxcMFwsYCxgLFww6CzsLFww6CxgLGAsXCzsLGAsABewLOgwXChkKGQoYCzsKGQoYCzsKGQo7CzsKPAoYCjwKAAWmCzsKGQoZChgKGQoZCjsLOwsYCjsLGAoZChgLOwsYCwAF7As7CxgLFwwXCxgLOgwXDBcLOgwXDDoLOgw6CxgLOgwABaQNOgsYCxgLFwwXCxgLOgw6CxgLOgwXCxgLFww6CxgLAAXsDDoLFwwXDBcLGAs5DRcLGAs6DBcLOws6DDoLGAs6DAAFpQw5DBcMFwsYCxgLFww6CzsLFww6CxgLFwwXCzsLFwwABewLOgwXCxgLGAsXDDoLGAsYCzoLGAs6DDoLOwsXDDoLAA0FAAAAAAAAAAA='
+
+    
+# Add TV & Onkyo AV Receiver 
+
+wake_on_lan:
+
+media_player:
+  - platform: onkyo
+    host: 192.168.1.56
+    name: NR646
+    
+  - platform: webostv
+    host: 192.168.1.110
+    Name: LG TV
+    mac: 78:5D:C8:3F:4E:79
+    filename: webostv.conf
+    icon: mdi:television
+    turn_on_action:
+      service: wake_on_lan.send_magic_packet
+      data:
+        mac: 78:5D:C8:3F:4E:79
+
+    
+scene:
+  - name: KTV
+    entities:
+      media_player.nr646:
+        source: Bluray
+    #entities:
+     # media_player.nr646:
+        #volume_level: 0.6
+  - name: PS4 - On Sharp
+    entities:
+      media_player.nr646:
+        source: Video 6
+  - name: Apple TV
+    entities:
+      media_player.nr646:
+        source: Video 2
+  - name: Switch 01
+    entities:
+      media_player.nr646:
+        source: Video 3
+  - name: Switch 02
+    entities:
+      media_player.lg_webos_smart_tv:
+        source: HDMI3
+  - name: PS4 - On LG
+    entities:
+      media_player.lg_webos_smart_tv:
+        source: HDMI2
+  - name: LG Copy Sharp
+    entities:
+      media_player.lg_webos_smart_tv:
+        source: HDMI1        
+        
+    
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+
+
+
