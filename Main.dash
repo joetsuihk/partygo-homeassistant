@@ -148,7 +148,21 @@ lg_youtube:
     title: Youtube -
     icon_on: fa-hourglass-half
     icon_off: fa-youtube
-    
+
+lg_ps4:
+    widget_type: script
+    entity: script.lg_ps4
+    title: PS4 on LG
+    icon_on: fa-hourglass-half
+    icon_off: fa-gamepad
+
+lg_switch:
+    widget_type: script
+    entity: script.lg_switch
+    title: Switch on LG
+    icon_on: fa-hourglass-half
+    icon_off: fa-gamepad
+
 nr646_vol_up:
     widget_type: script
     entity: script.nr646_vol_up
@@ -181,4 +195,4 @@ layout:
     - clock(5x1), power_on, power_off
     - lights_label, moonlight, starlight1, starlight2, spotlight1, spotlight2, switch.tiolet_light
     - sharp_label, nr646_vol_down, nr646_vol_up, ktv, ps4_on_sharp, appletv_on_sharp, switch_on_sharp
-    - lg_label, lg_vol_down, lg_vol_up, switch_on_lg, ps4_on_lg, lg_netflix, lg_youtube #lg_copy_sharp
+    - lg_label, lg_vol_down, lg_vol_up, lg_switch, lg_ps4, lg_netflix, lg_youtube #lg_copy_sharp ps4_on_lg, switch_on_lg

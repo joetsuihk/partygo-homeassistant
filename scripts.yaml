@@ -118,6 +118,30 @@
       source: YouTube
     service: media_player.select_source
 
+'lg_ps4':
+  alias: LG PS4
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+      volume_level: 0.35
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+      source: HDMI2
+    service: media_player.select_source
+
+'lg_switch':
+  alias: LG Switch
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+      volume_level: 0.35
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+      source: HDMI3
+    service: media_player.select_source
+
 'lg_vol_up':
   alias: LG volume up
   sequence:
