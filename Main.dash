@@ -193,6 +193,6 @@ power_off:
 
 layout:
     - clock(5x1), power_on, power_off
-    - lights_label, moonlight, starlight1, starlight2, spotlight1, spotlight2, switch.tiolet_light
+    - lights_label, moonlight, starlight1, starlight2, spotlight1, spotlight2, switch.toilet_light
     - sharp_label, nr646_vol_down, nr646_vol_up, ktv, ps4_on_sharp, appletv_on_sharp, switch_on_sharp
     - lg_label, lg_vol_down, lg_vol_up, lg_switch, lg_ps4, lg_netflix, lg_youtube #lg_copy_sharp ps4_on_lg, switch_on_lg

@@ -159,3 +159,29 @@
     service: media_player.volume_set
     data_template:
       volume_level: '{{ states.media_player.lg_webos_smart_tv.attributes.volume_level | float - 0.1 }}'
+
+
+'lg_15min':
+  alias: LG 15 min left
+  sequence:
+  - data:
+      message: "距離時段完結仲有15 分鐘。<br /><img width='300' height='300' src='https://i.imgur.com/nXGe9Mf.jpg'/>"
+      #message: 距離時段完結仲有15 分鐘。<br /><img width='300' height='300' src='https://i.imgur.com/nXGe9Mf.jpg'/>
+    service: notify.lg_tv
+
+'lg_5min':
+  alias: LG 5 min left
+  sequence:
+  - data:
+      message: "距離時段完結仲有5 分鐘。<br /><img width='300' height='300' src='https://i.imgur.com/nXGe9Mf.jpg'/>"
+      #message: 距離時段完結仲有15 分鐘。<br /><img width='300' height='300' src='https://i.imgur.com/nXGe9Mf.jpg'/>
+    service: notify.lg_tv
+
+'lg_play_youtube':
+  alias: LG play youtube
+  sequence:
+  - data:
+      entity_id: media_player.lg_webos_smart_tv
+      media_content_id: https://www.youtube.com/watch?v=qghQ5eKGcyE
+      media_content_type: video/youtube
+    service: media_extractor.play_media

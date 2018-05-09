@@ -90,7 +90,7 @@ switch:
     retain: true 
 
   - platform: mqtt
-    name: "Tiolet Light"
+    name: "Toilet Light"
     state_topic: "stat/sonoffT1UK1/POWER"
     command_topic: "cmnd/sonoffT1UK1/POWER"
     qos: 1
@@ -200,6 +200,15 @@ tts:
 
 # Cloud
 cloud:
+
+media_extractor:
+
+#notify
+notify:
+  - platform: webostv
+    host: 192.168.1.110
+    name: LG TV
+
 
 group: !include groups.yaml
 automation: !include automations.yaml
