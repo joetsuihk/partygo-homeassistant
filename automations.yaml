@@ -1,0 +1,21 @@
+- id: limit_nr646_vol  # <-- Required for editor to work.
+  alias: Limit NR646 volume
+  trigger:
+  - platform: numeric_state 
+    entity_id: media_player.nr646
+    above: 0.5
+    value_template: '{{ state.attributes.volume_level }}'
+  condition:
+  action:
+  - service: script.nr646_vol_max
+
+- id: limit_lg_vol  # <-- Required for editor to work.
+  alias: Limit LG volume
+  trigger:
+  - platform: numeric_state 
+    entity_id: media_player.lg_webos_smart_tv
+    above: 0.5
+    value_template: '{{ state.attributes.volume_level }}'
+  condition:
+  action:
+  - service: script.lg_vol_max
