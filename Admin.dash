@@ -1,0 +1,67 @@
+##
+## Main arguments, all optional
+##
+title: Admin Panel
+widget_dimensions: [120, 120]
+widget_size: [1, 1]
+widget_margins: [5, 5]
+columns: 7
+global_parameters:
+    use_comma: 0
+    precision: 1
+    use_hass_icon: 1
+    namespace: default
+    devices:
+      media_player:
+        step: 5
+
+clock:
+    widget_type: clock
+    date_format_country: "us"
+    date_format_options:
+      weekday: "short"
+      day: "numeric"
+      month: "numeric"
+
+lg_copy_sharp:
+    title: LG copy Sharp
+    widget_type: switch
+    entity: scene.lg_copy_sharp
+    icon_on: fa-square
+    icon_off: fa-square
+    icon_style_active: "color:grey;"
+
+15min_notice_sharp:
+    title: 15min alert on LG
+    widget_type: script
+    entity: script.lg_15min
+    icon_on: fa-hourglass-half
+    icon_off: fa-hourglass-half
+    icon_style_active: "color:grey;"
+
+5min_notice_sharp:
+    title: 5min alert on LG
+    widget_type: script
+    entity: script.lg_5min
+    icon_on: fa-hourglass-half
+    icon_off: fa-hourglass-half
+    icon_style_active: "color:grey;"
+
+power_on:
+    widget_type: script
+    entity: script.1522644744669
+    title: Power On -
+    icon_on: fa-hourglass-half
+    icon_off: fa-battery-full
+
+power_off:
+    widget_type: script
+    entity: script.1522648898669
+    title: Power Off -
+    icon_on: fa-hourglass-half
+    icon_off: fa-battery-empty
+
+layout:
+    - clock(5x1), power_on, power_off
+    - 5min_notice_sharp, 15min_notice_sharp
+    - lg_copy_sharp
