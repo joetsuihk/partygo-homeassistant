@@ -54,6 +54,24 @@
     data_template:
       volume_level: '{{ 0.5 }}'
       
+'nr646_vol_max_40':
+  alias: AVR volume max
+  sequence:
+  - data:
+      entity_id: media_player.nr646
+    service: media_player.volume_set
+    data_template:
+      volume_level: '{{ 0.4 }}'
+
+'nr646_vol_max_50':
+  alias: AVR volume max
+  sequence:
+  - data:
+      entity_id: media_player.nr646
+    service: media_player.volume_set
+    data_template:
+      volume_level: '{{ 0.5 }}'
+      
 'nr646_ps4':
   alias: AVR PS4
   sequence:
@@ -193,6 +211,13 @@
   - data:
       message: "距離時段完結仲有5 分鐘。<br /><img width='300' height='300' src='https://i.imgur.com/nXGe9Mf.jpg'/>"
       #message: 距離時段完結仲有15 分鐘。<br /><img width='300' height='300' src='https://i.imgur.com/nXGe9Mf.jpg'/>
+    service: notify.lg_tv
+    
+'lg_close_door':
+  alias: LG close door
+  sequence:
+  - data:
+      message: "系統提示：請關上兩對門，以防聲浪外泄到房外，謝謝！<br /><img width='300' height='300' src='https://i.imgur.com/nXGe9Mf.jpg'/>"
     service: notify.lg_tv
 
 'lg_play_youtube':
